@@ -1,0 +1,25 @@
+<form #registrationForm="ngForm" (ngSubmit) = onSubmit(registrationForm)>
+    <div>
+        <label for="">name:</label>
+        <input id="firstname" name="firstname" type="text" ngModel #firstname="ngModel" required placeholder="firstname" >
+        <small *ngIf="firstname.invalid && firstname.touched">fill the value</small>
+    </div>
+    <div>
+        <label for="">lastname:</label>
+        <input id="lastname" name="lastname" type="text" ngModel #lastname="ngModel" required placeholder="lastname">
+        <small *ngIf="lastname.invalid && lastname.touched">fill the value</small>
+    </div>
+    <div>
+        <label for="">password:</label>
+        <input id="passwors" name="password" type="password" ngModel  #password="ngModel" required placeholder="password">
+        <small *ngIf="password.invalid && password.touched">fill the value</small>
+    </div>
+
+    <button type="submit" [disabled]="!registrationForm.valid">Submit</button>
+</form>
+
+<p>{{firstname.value | json}} {{lastname.value | json}} {{password.value | json}}</p>
+<br>
+<ul>
+    <li *ngFor="let item of submitted">{{item.firstname}} {{item.lastname}} {{item.password}}</li>
+</ul>

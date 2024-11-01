@@ -1,0 +1,26 @@
+
+  <form [formGroup] = "profileForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Name: </label>
+      <input type="text" id="name" formControlName="name">
+      <small class="danger" *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+        Name is Required</small>
+    </div>
+
+    <div>
+      <label>Age: </label>
+      <input type="text" id="age" formControlName="age">
+      <small class="danger" *ngIf="profileForm.get('age')?.invalid && profileForm.get('age')?.touched">
+        Age is Required</small>
+    </div>
+
+    <button type="submit" [disabled]="profileForm.get('name')?.invalid && profileForm.get('age')?.invalid">
+      SUBMIT</button>
+  </form>
+
+  <p>{{profileForm.get('name')?.value | json}}  {{profileForm.get('age')?.value | json}}</p>
+
+<br>
+<ul>
+  <li *ngFor="let data of profileDatas">{{data.name}} {{data.age}}</li>
+</ul>
